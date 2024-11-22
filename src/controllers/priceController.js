@@ -1,7 +1,6 @@
 const axios = require("axios");
 const PriceHistory = require("../models/PriceHistory");
 
-// Helper to construct API URLs based on asset type
 const getApiUrl = (asset, type) => {
   if (type === "Crypto") {
     return `https://api.coingecko.com/api/v3/simple/price?ids=${asset}&vs_currencies=usd`;
@@ -15,7 +14,6 @@ const getApiUrl = (asset, type) => {
   throw new Error(`Unsupported type: ${type}`);
 };
 
-// Fetch real-time price
 const fetchRealTimePrice = async (req, res) => {
   const { asset, type } = req.query;
 

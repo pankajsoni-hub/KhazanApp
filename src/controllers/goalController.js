@@ -29,8 +29,6 @@ const getGoals = async (req, res) => {
 
   try {
     let filter = { user: req.user.id };
-
-    // Apply time horizon filtering if provided
     if (timeHorizon === "short-term") {
       filter.targetDate = { $lte: new Date(new Date().setFullYear(new Date().getFullYear() + 1)) };
     } else if (timeHorizon === "long-term") {

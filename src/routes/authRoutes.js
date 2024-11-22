@@ -6,20 +6,20 @@ const rateLimit = require('express-rate-limit');
 const router = express.Router();
 
 const loginLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
+    windowMs: 15 * 60 * 1000,
     max: 10,
     message: 'Too many login attempts, please try again later.',
   });
   const ipRateLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 5, // Limit each IP to 5 requests per 15 minutes for /register and /login
+    windowMs: 15 * 60 * 1000, 
+    max: 5, 
     message: {
       status: 429,
       error: 'Too many requests from this IP, please try again later.',
     },
-    keyGenerator: (req) => req.ip, // Use IP address as the key for rate limiting
-    standardHeaders: true, // Include rate-limit info in the response headers
-    legacyHeaders: false, // Disable legacy headers like X-RateLimit-*
+    keyGenerator: (req) => req.ip, 
+    standardHeaders: true,
+    legacyHeaders: false,
   });
 
 router.post("/register",ipRateLimiter, register);

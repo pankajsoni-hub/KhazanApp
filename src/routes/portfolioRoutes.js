@@ -9,9 +9,9 @@ const { authenticate } = require("../middlewares/authMiddleware");
 
 const router = express.Router();
 
-router.post("/portfolio", authenticate, createPortfolio); // Create a portfolio
-router.post("/portfolio/:id/assets", authenticate, addAssetToPortfolio); // Add asset
-router.get("/portfolio", authenticate, getPortfolios); // Fetch all portfolios
-router.get("/portfolio/summary", authenticate, getPortfolioSummary); // Portfolio summary
+router.post("/portfolio", authenticate, createPortfolio); 
+router.post("/portfolio/:id/assets", authenticate, addAssetToPortfolio); 
+router.get("/portfolio", authenticate, getPortfolios);
+router.get("/portfolio/summary", authenticate, getPortfolioSummary); 
 
 module.exports = router;
